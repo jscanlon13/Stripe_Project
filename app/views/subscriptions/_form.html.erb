@@ -1,0 +1,55 @@
+<%= form_for(@payment) do |f| %>
+  <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%- if @cc_last_4 %>
+    <div class="field">
+      <input type="radio" name="saved_card" value="true"/> Saved Card
+      <input type="radio" name="saved_card" value="false"/> New Card
+    </div>
+
+    <div id="saved_card">
+      <div class="field">
+        <label>Saved Card</label>
+        <input id="saved-number" type="text" disabled="true" value="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; <%= @cc_last_4 %>" />
+      </div>
+    </div>
+  <%- end %>
+  <div id="new_card">
+    <div class="field">
+      <%= f.hidden_field :stripe_token %>
+    </div>
+    <div class="field">
+      <label>Card Number</label>
+      <input id="card-number" type="text" placeholder="4242 4242 4242 4242" />
+    </div>
+    <div class="field">
+      <label>CV Code</label>
+      <input id="cvc" type="text" placeholder="123" />
+    </div>
+    <div class="field">
+      <label>Expiry Month</label>
+      <input id="exp-month" type="text" placeholder="12" />
+    </div>
+    <div class="field">
+      <label>Expiry Year</label>
+      <input id="exp-year" type="text" placeholder="14" />
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

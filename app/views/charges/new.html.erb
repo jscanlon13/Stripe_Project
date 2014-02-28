@@ -1,0 +1,18 @@
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+    	<h1>Pay up front for a Gold Plan (15% Discount)</h1>
+      <span>Amount: EUR 42.50</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_pdLrBbfeVIunkqyIwceiCwE3"
+          data-description="Pay for Gold Plan Up Front"
+          data-amount="4250"
+          data-currency = "EUR"
+          data-name = "Continuum Commerce"
+          data-image = "http://m.c.lnkd.licdn.com/media/p/4/000/14f/007/25714e5.png">
+
+          </script>
+<% end %>

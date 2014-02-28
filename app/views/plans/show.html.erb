@@ -1,0 +1,9 @@
+<p><%= link_to "Home", root_path %> | <%= link_to "List Subscriptions", subscriptions_path %>| <%= link_to "Charges", new_charge_path %></p>
+<h1>Plans#show</h1>
+Name : <%= @plan.name %> <br><br>
+Price: €<%= @plan.price %><br><br>
+<%= link_to "List", plans_path %> |
+<%= link_to "Edit", edit_plan_path(@plan) %> |
+<%= link_to "Delete", @plan, :method => :delete, :confirm => "Are you sure? " %>
+
+
